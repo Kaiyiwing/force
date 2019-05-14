@@ -11,6 +11,7 @@ let ks = 0.0005;
 let L = 400;
 let f_x = [];
 let f_y = [];
+let choosed = -1;
 
 window.onload = function()
 {
@@ -26,9 +27,9 @@ window.onload = function()
 function click_init()
 {
 
-    // canvas.onmousedown = onClick1;
+    canvas.onmousedown = onClick;
     canvas.onmousemove = onMove;
-    // canvas.onmouseup = onUp1;
+    canvas.onmouseup = onUp;
 }
 function onMove(e)
 {
@@ -38,8 +39,35 @@ function onMove(e)
 
     $('#cord').html(x+','+y);
 
+    if(choosed !== -1)
+    {
+        NodeList[choosed].x = x;
+        NodeList[choosed].y = y;
+    }
+
+}
+function onClick(e)
+{
+    const rect = canvas.getBoundingClientRect();
+    const x = parseInt((e.clientX - rect.left) * 2);
+    const y = parseInt((e.clientY - rect.top) * 2);
+
+    for(let i in NodeList)
+    {
+        if(Math.sqrt(Math.pow(x - NodeList[i].x,2) + Math.pow(y - NodeList[i].y,2)) < r)
+        {
+            choosed = i;
+        }
+
+    }
+
+
 }
 
+function onUp(e)
+{
+    choosed = -1;
+}
 function ForceDirected(){
 
     let num = 10;
