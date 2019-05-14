@@ -54,7 +54,7 @@ function onClick(e)
 
     for(let i in NodeList)
     {
-        if(Math.sqrt(Math.pow(x - NodeList[i].x,2) + Math.pow(y - NodeList[i].y,2)) < r)
+        if(Math.sqrt(Math.pow(x - NodeList[i].x,2) + Math.pow(y - NodeList[i].y,2)) < 2*r)
         {
             choosed = i;
         }
