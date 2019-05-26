@@ -121,7 +121,7 @@ function ForceDirected(){
 }
 function do_time()
 {
-    // cal_repulsive();
+    cal_repulsive();
     cal_spring();
 
     apply_force();
